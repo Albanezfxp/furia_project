@@ -1,0 +1,59 @@
+.login-button {
+    width: 60%;
+    height: 55px;
+    margin-top: 12px;
+    background: transparent;
+    border: 2px solid #FFFFFF;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .login-button img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .login-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  }
+
+  .register-button {
+    width: 80%;
+    height: 55px;
+    margin-top: 12px;
+    background: transparent;
+    border: 2px solid #FFFFFF;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .register-button img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .register-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  }

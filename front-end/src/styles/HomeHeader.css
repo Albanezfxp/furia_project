@@ -1,0 +1,20 @@
+.home-logo {
+    width: 100px;
+    height: auto;
+  }
+  
+  .home-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    margin-top: 16px;
+    letter-spacing: 1px;
+  }
+  
+  .home-subtitle {
+    font-family: 'Chivo', sans-serif;
+    font-size: 13px;
+    color: #fff;
+    margin-top: 8px;
+    font-weight: 300;
+  }

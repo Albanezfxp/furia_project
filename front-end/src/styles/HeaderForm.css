@@ -1,0 +1,26 @@
+.login-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+  }
+  
+  .login-title {
+    font-size: 35px;
+    margin-bottom: 15px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .register-logo {
+    cursor: pointer;
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.register-title {
+  font-size: 35px;
+  margin-bottom: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+}
