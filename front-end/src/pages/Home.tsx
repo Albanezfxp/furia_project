@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import { Link } from "react-router-dom";
 import logo from "../assets/original-519eba43b5e06c4036ad54fe2b6e496f.jpg";
 import botIcon from "../assets/Furia_Esports_logo.png";

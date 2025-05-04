@@ -1,4 +1,3 @@
-// src/chat/chat.gateway.ts
 import { WebSocketGateway, WebSocketServer, OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, MessageBody, ConnectedSocket } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
@@ -33,16 +32,14 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     client.join(`user_${userId}`);
 
     try {
-      // Atualiza status do usuário para online
       await this.prisma.user.update({
         where: { id: parseInt(userId.toString()) },
         data: { 
           online: true,
-          lastSeen: null // Limpa o lastSeen quando o usuário está online
+          lastSeen: null 
         }
       });
 
-      // Notifica amigos sobre a conexão
       const connections = await this.prisma.userConnection.findMany({
         where: { userId: parseInt(userId.toString()) },
         select: { friendId: true }
@@ -67,7 +64,6 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     this.logger.log(`Cliente desconectado: ${client.id} (User ID: ${userId})`);
 
     try {
-      // Atualiza status do usuário para offline
       await this.prisma.user.update({
         where: { id: parseInt(userId.toString()) },
         data: { 
@@ -76,7 +72,6 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
         }
       });
 
-      // Notifica amigos sobre a desconexão
       const connections = await this.prisma.userConnection.findMany({
         where: { userId: parseInt(userId.toString()) },
         select: { friendId: true }
@@ -100,12 +95,10 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     @ConnectedSocket() client: Socket
   ) {
     try {
-      // Validação básica
       if (!data.content?.trim()) {
         return { success: false, error: 'Mensagem vazia' };
       }
 
-      // Salva a mensagem no banco de dados
       const message = await this.prisma.message.create({
         data: {
           senderId: parseInt(data.senderId),
@@ -123,7 +116,6 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
         }
       });
 
-      // Envia a mensagem para o destinatário
       this.server.to(`user_${data.receiverId}`).emit('newMessage', {
         id: message.id,
         senderId: data.senderId,
@@ -132,7 +124,6 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
         timestamp: message.createdAt
       });
 
-      // Confirmação para o remetente
       return { 
         success: true, 
         messageId: message.id,

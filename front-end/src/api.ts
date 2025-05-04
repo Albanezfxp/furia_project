@@ -17,12 +17,10 @@
     });
 
     
-  // Interceptor para tratar erros globais
   api.interceptors.response.use(
       (response) => response,
       (error) => {
         if (error.response?.status === 401) {
-          // Token inválido/expirou - redirecionar para login
           window.location.href = '/login';
         }
         return Promise.reject(error);

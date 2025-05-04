@@ -1,4 +1,3 @@
-// src/messages/messages.controller.ts
 import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 

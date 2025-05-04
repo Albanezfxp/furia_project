@@ -31,7 +31,7 @@ export default function LoginForm() {
         password: String(formData.password).trim(),
       };
       const response = await api.post(`user/login`, payload );
-      console.log('Resposta:', response.data); // Adicione esta linha
+      console.log('Resposta:', response.data); 
       localStorage.setItem('userId', response.data.id.toString());
 
       setError(null)

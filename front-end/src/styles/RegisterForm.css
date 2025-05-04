@@ -76,17 +76,17 @@
 }
 
   .error-message {
-    background-color: #f8d7da; /* Vermelho claro de fundo */
-    color: #721c24; /* Vermelho escuro para o texto */
+    background-color: #f8d7da;
+    color: #721c24;
     padding: 15px;
     margin: 20px 0;
-    border: 1px solid #f5c6cb; /* Borda vermelha mais clara */
+    border: 1px solid #f5c6cb;
     border-radius: 4px;
     font-family: Arial, sans-serif;
     font-size: 14px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    animation: shake 0.5s ease-in-out; /* Animação de "tremer" para alertar */
+    animation: shake 0.5s ease-in-out; 
   }
 
   @keyframes shake {

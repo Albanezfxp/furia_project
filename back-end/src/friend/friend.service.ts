@@ -1,4 +1,3 @@
-// src/friend/friend.service.ts
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -7,13 +6,11 @@ export class FriendsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async startConversation(currentUserId: number, targetEmail: string) {
-    // Validação básica do email
     const cleanEmail = targetEmail.toLowerCase().trim();
     if (!this.validateEmail(cleanEmail)) {
       throw new HttpException('Email inválido', HttpStatus.BAD_REQUEST);
     }
 
-    // Busca os usuários envolvidos
     const [currentUser, targetUser] = await Promise.all([
       this.prisma.user.findUnique({ 
         where: { id: currentUserId },
@@ -37,7 +34,6 @@ export class FriendsService {
       throw new HttpException('Você não pode conversar consigo mesmo', HttpStatus.BAD_REQUEST);
     }
 
-    // Verifica/Cria conexão entre usuários
     await this.prisma.$transaction(async (prisma) => {
       const existingConnection = await prisma.userConnection.findFirst({
         where: {
@@ -64,7 +60,7 @@ export class FriendsService {
         id: targetUser.id.toString(),
         name: targetUser.name,
         email: targetUser.email,
-        online: false // Inicialmente offline até receber atualização via WebSocket
+        online: false
       }
     };
   }
@@ -90,7 +86,7 @@ export class FriendsService {
       id: conn.friend.id.toString(),
       name: conn.friend.name,
       email: conn.friend.email,
-      avatar: '', // Você pode adicionar avatares depois
+      avatar: '', 
       online: conn.friend.online,
       lastSeen: conn.friend.lastSeen?.toISOString()
     }));
@@ -104,7 +100,6 @@ export class FriendsService {
       );
     }
 
-    // Busca usuários que não são amigos ainda
     const users = await this.prisma.user.findMany({
       where: {
         AND: [
@@ -117,14 +112,14 @@ export class FriendsService {
           {
             NOT: {
               OR: [
-                { id: currentUserId }, // Não inclui o próprio usuário
+                { id: currentUserId }, 
                 { 
                   friendsInitiated: { 
                     some: { 
                       friendId: currentUserId 
                     } 
                   } 
-                }, // Não inclui amigos já existentes
+                }, 
                 { 
                   friendsReceived: { 
                     some: { 
@@ -144,7 +139,7 @@ export class FriendsService {
         online: true,
         lastSeen: true
       },
-      take: 10 // Limita resultados
+      take: 10 
     });
 
     return users.map(user => ({

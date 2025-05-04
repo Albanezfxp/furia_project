@@ -20,7 +20,7 @@ export default function RegisterForm() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value.trim(), // Aplica trim imediatamente
+      [name]: value.trim(), 
     }));
   };
 

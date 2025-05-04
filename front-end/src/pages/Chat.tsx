@@ -58,12 +58,10 @@ const Chat = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [currentUserId] = useState(localStorage.getItem('userId') || "1");
 
-  // Detecta mudança de tamanho de tela
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      // Se mudou para desktop e menu está fechado, abre
       if (!mobile && !showFriendsMenu) {
         setShowFriendsMenu(true);
       }
@@ -73,7 +71,6 @@ const Chat = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [showFriendsMenu]);
 
-  // Carrega conversas ao iniciar
   useEffect(() => {
     const loadConversations = async () => {
       try {
@@ -95,7 +92,6 @@ const Chat = () => {
     loadConversations();
   }, [currentUserId]);
 
-  // Configura WebSocket
   useEffect(() => {
     socketRef.current = io('http://localhost:3000', {
       query: { userId: currentUserId },
@@ -144,7 +140,6 @@ const Chat = () => {
     };
   }, [currentUserId, activeChat]);
 
-  // Carrega mensagens quando muda de chat
   useEffect(() => {
     if (activeChat.type === 'friend' && activeChat.id) {
       loadMessages(activeChat.id);
@@ -380,7 +375,6 @@ const Chat = () => {
     return `Visto em ${lastSeenDate.toLocaleDateString()}`;
   };
 
-  // Rolagem automática para a última mensagem
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
