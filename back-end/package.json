@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "postInstall": "prisma generate",
-    "vercel-build": "nest build && npx prisma generate && xcopy /E /I /Y src\\prisma dist\\prisma && xcopy /E /I /Y prisma dist\\prisma && copy package.json dist\\ && copy .env dist\\ || true",
+    "vercel-build": "nest build && npx prisma generate && xcopy /E /I /Y src\\prisma dist\\prisma && xcopy /E /I /Y prisma dist\\prisma && copy node_modules/.prisma/client/* dist/node_modules/.prisma/client/ && copy package.json dist\\ && copy .env dist\\",
     "start": "node dist/main",
     "prisma:deploy": "npx prisma migrate deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

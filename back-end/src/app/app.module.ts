@@ -9,9 +9,10 @@ import { PrismaService } from '../prisma/prisma.service';
 import { UserModule } from '../user/user.module';
 import { PrismaModule } from '../prisma/prisma.module';
 import { PrismaController } from '../prisma/prisma.controller';
-import { ChatGateway } from 'src/chat/chat/chat.gateway';
-import { FriendsModule } from 'src/friend/friend.module';
-import { MessagesController } from 'src/messages/messages.controller';
+import { FriendsModule } from '@src/friend/friend.module';
+import { MessagesController } from '@src/messages/messages.controller';
+import { ChatGateway } from '@src/chat/chat/chat.gateway';
+
 
 @Module({
   imports: [UserModule, PrismaModule, FriendsModule],

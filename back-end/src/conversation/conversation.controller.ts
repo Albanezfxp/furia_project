@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Param, Body } from '@nestjs/common';
-import { FriendsService } from 'src/friend/friend.service';
+import { FriendsService } from '@src/friend/friend.service';
 
 @Controller('conversations')
 export class ConversationsController {

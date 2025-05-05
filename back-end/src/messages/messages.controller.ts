@@ -1,5 +1,5 @@
-import { Controller, Get, Param, UseGuards } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import { Controller, Get, Param} from '@nestjs/common';
+import { PrismaService } from '@src/prisma/prisma.service';
 
 @Controller('messages')
 export class MessagesController {
