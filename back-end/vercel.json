@@ -2,10 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "*/back-end/**",
+      "src": "back-end/package.json",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["dist/**", "prisma/**", "node_modules/**"]
+        "includeFiles": [
+          "back-end/dist/**",
+          "back-end/prisma/**",
+          "back-end/node_modules/.prisma/**"
+        ]
       }
     }
   ],
