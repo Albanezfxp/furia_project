@@ -6,7 +6,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-"vercel-build": "nest build && npx prisma generate && xcopy /E /I /Y src\\prisma dist\\prisma && xcopy /E /I /Y prisma dist\\prisma && copy package.json dist\\ && copy .env dist\\ || true",    "start": "node dist/main",
+    "postInstall": "prisma generate",
+    "vercel-build": "nest build && npx prisma generate && xcopy /E /I /Y src\\prisma dist\\prisma && xcopy /E /I /Y prisma dist\\prisma && copy package.json dist\\ && copy .env dist\\ || true",
+    "start": "node dist/main",
     "prisma:deploy": "npx prisma migrate deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start_nest": "nest start",
@@ -34,7 +36,8 @@
     "module-alias": "^2.2.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "vercel": "^41.7.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
