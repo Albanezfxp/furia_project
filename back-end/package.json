@@ -6,8 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "vercel-build": "npm install && npm run build && npx prisma generate && shx cp -r prisma dist/",
-    "start": "node dist/main",
+    "vercel-build": "nest build && npx prisma generate && xcopy /E /I /Y src\\prisma dist\\prisma && xcopy /E /I /Y prisma dist\\prisma",    "start": "node dist/main",
     "prisma:deploy": "npx prisma migrate deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start_nest": "nest start",
