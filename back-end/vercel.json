@@ -1,14 +1,14 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "src/main.ts",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": ["dist/**", "prisma/**", "src/**/*.entity.ts"]
-        }
+  "builds": [
+    {
+      "src": "src/main.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**", "prisma/**"]
       }
-    ],
+    }
+  ],
     "routes": [
       {
         "src": "/(.*)",
