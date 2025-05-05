@@ -1,21 +1,17 @@
+// main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
-import 'module-alias/register';
-
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  // Configuração para Vercel Serverless
+  // Configuração CORS
   app.enableCors({
-    origin: [
-      'https://furia-bot-wlvj.vercel.app',
-      'http://localhost:3000'
-    ], 
-    credentials: true // Se usar cookies/tokens
-
+    origin: 'http://localhost:5173', // ou '*' para permitir todos (não recomendado para produção)
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
   });
 
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(3000);
 }
 bootstrap();
